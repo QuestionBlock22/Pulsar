@@ -51,4 +51,6 @@ Network:
 
 
 Credits:
-- Treeki for [Kamek](https://github.com/Treeki/Kamek/tree/master). The engine has been ever so slightly modified to create a new output format which combines the usual 4 binaries. 
+- Treeki for [Kamek](https://github.com/Treeki/Kamek/tree/master). The engine has been ever so slightly modified to create a new output format which combines the usual 4 binaries.
+- Saucy for the reimplementation of Prolonged Rocket Boost and Blue Shell Hop Dodge from [Mario Kart Mayhem](https://www.github.com/SaucyCF/MKMayhem].
+- Gaberboo, Vabold, and ImZeraora for the reimplementation of Mario Kart DS' snaking.
