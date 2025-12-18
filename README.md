@@ -1,6 +1,6 @@
 # Pulsar
 
-A personal fork of Pulsar implementing various different modules created by the community. This is an experimental repository, user discretion advised.
+*A personal fork of Pulsar implementing various different modules created by the community. This is an experimental repository, user discretion advised.*
 
 Pulsar is a Mario Kart Wii Kamek-Based engine to create CT distributions. It comes with its own [software](../main/PulsarPackCreator/Executable) to aid in building custom distributions, and multiple quality of life features:
 
