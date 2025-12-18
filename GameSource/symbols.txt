@@ -18,6 +18,7 @@ strtok = 0x800134cc
 strstr = 0x800135f0
 swprintf = 0x80017814
 wcslen = 0x80017998
+wcscmp = 0x80017a14
 wcsncpy = 0x800179d0
 wcschr = 0x80017a48
 cos = 0x8001b590
@@ -26,6 +27,7 @@ pow = 0x8001bbf0
 strlen = 0x80021254
 __div2u = 0x80021604
 __mod2u = 0x80021828
+__shr2u = 0x80021a3c
 
 ##Misc##
 #Misc
@@ -129,6 +131,9 @@ SSL_Initialised = 0x80386d4c
 
 #DWC
 Printf__3DWCFUiPCce = 0x800cd068
+SetOwnStatusData__3DWCFPCcUi = 0x800ce24c
+AddMatchKeyString__3DWCFUcPCcPCc = 0x800d45f4
+AddMatchKeyInt__3DWCFUcPCcPCi = 0x800d4258
 InitGHTTP__3DWCFPCc = 0x800cd3b0
 ShutdownGHTTP__3DWCFv = 0x800cd3f4
 ProcessGHTTP__3DWCFv = 0x800cd4a8
@@ -145,6 +150,19 @@ Patch_WiimmfiHook1 = 0x800ee3a0
 loginRegion__3DWC = 0x80384fd0
 DWC_AuthServer = 0x80386338
 authServer__3DWC = 0x80386338 
+sInstance__Q23DWC12MatchControl = 0x8038630C
+gsimalloc = 0x800f3860
+DWCi_QR2Startup = 0x800d4e58
+DWC_SetReportLevel = 0x800cd060
+DWCi_SBCallback = 0x800e31c0
+DWCi_NodeInfoList_GetNodeInfoForAid = 0x800e7ee0
+DWCi_GT2ClosedProcess = 0x800d37bc
+DWC_ProcessFriendsMatch = 0x800d115c
+GetLastErrorEx__3DWCFPUiPQ23DWC9ErrorType = 0x800ccb64
+CreateFriendKey__3DWCFPCQ23DWC11AccUserData = 0x800ec6bc
+
+#MatchControl
+sInstance__Q23DWC19FriendsMatchControl = 0x803862F0
 
 #GHTTP
 PostAddFileFromMemoryA__5GHTTPFPPQ25GHTTP7GHIPostPCcPCviPCcPCc = 0x80113944
@@ -601,6 +619,8 @@ isTaskExist__Q23EGG10TaskThreadFv = 0x80242c98
 
 #System
 mInstance__Q23EGG7TSystem = 0x802a4080
+sInstance__Q23EGG7TSystem = 0x80385fc8
+Init__13SystemManagerFv = 0x8000AC50
 
 #Exception
 console__Q23EGG9Exception = 0x80386E3C
@@ -682,6 +702,7 @@ __vt__Q25Input16ControllerHolder = 0x808b2dd8
 #RealControllerHolder
 SetController__Q25Input20RealControllerHolderFPCQ25Input10ControllerPUi = 0x80521554
 SetController__Q25Input20RealControllerHolderFPQ25Input10ControllerPv = 0x80521554
+StartMatching__Q25RKNet10ControllerFv = 0x80659044
 EndGhostWriting__Q25Input20RealControllerHolderFv = 0x80521688
 __dt__Q25Input20RealControllerHolderFv = 0x805222f4
 __vt__Q25Input20RealControllerHolder = 0x808b2d90
@@ -717,6 +738,7 @@ GetPlayerIdOfLocalPlayer__8RacedataFUc = 0x80531f70
 SetGhost__8RacedataFRC3RKG = 0x80531f2c
 pointsRoom__8Racedata = 0x80890030
 sInstance__8Racedata = 0x809bd728
+GetPlayerIdOfLocalPlayer__8RacedataCFUc = 0x80531f70
 
 #RacedataScenario
 ComputePlayerCounts__16RacedataScenarioCFPUcPUcPUc = 0x8052f788
@@ -744,6 +766,7 @@ Init__14RaceinfoPlayerFv = 0x80534194
 Disconnect__14RaceinfoPlayerFv = 0x80534cbc
 EndRace__14RaceinfoPlayerFRC5TimerbUi = 0x805347f4
 FillTimerWithSplits__14RaceinfoPlayerFUcP5Timer = 0x8053572c
+Vanish__14RaceinfoPlayerFv = 0x80534c78
 
 ##RKSYS
 #NAND
@@ -792,6 +815,7 @@ SetInstance__9CameraMgrFP9CameraMgr = 0x805a1a64
 __ct__10RaceCameraFUcR10GameScreenP3BCPUc = 0x805a1d10
 HasEveryOpeningPanEnded__13RaceCameraMgrCFv = 0x805a8fbc
 sInstance__13RaceCameraMgr = 0x809c19b8
+ChangeFocusedPlayer__13RaceCameraMgrFUc = 0x805a9b04
 
 ##MII
 #Mii
@@ -841,6 +865,12 @@ GetWheelPhysicsHolder__Q24Kart4LinkFUi = 0x80590704
 GetStats__Q24Kart4LinkCFv = 0x80590874
 GetType__Q24Kart4LinkCFv = 0x80590a10
 GetPlayerIdx__Q24Kart4LinkCFv = 0x80590a5c
+GetPosition__Q24Kart4LinkCFv = 0x8059020c
+GetMovement__Q24Kart4LinkFv = 0x8059077c
+IsLocal__Q24Kart4LinkCFv = 0x80590650
+GetPhysics__Q24Kart4LinkFv = 0x805903cc
+Update__Q24Kart7PhysicsFbff = 0x805b5170
+CameraFallingAdjustment__FiPfPvi = 0x805a463c
 
 #KartPlayer
 GetDriftState__Q24Kart6PlayerCFv = 0x805911d8
@@ -856,10 +886,10 @@ megaTCSpeed__4Kart = 0x808B5CBC
 speedRatioCC__4Kart = 0x808b5cd4
 regularBoostAccel__4Kart = 0x808b5c78
 unknown_70__4Kart = 0x808cb550
-
 #KartStatus
 UpdateFromInput__Q24Kart6StatusFv = 0x8059487c
 ApplyStartBoost__Q24Kart6StatusFi = 0x80595af8
+ApplyStartBoost__Q24Kart8MovementFi= 0x8058212c
 
 #KartPhyiscsHolder
 Update__Q24Kart18WheelPhysicsHolderFRC4Vec3RC5Mtx34f = 0x8059a278
@@ -868,6 +898,8 @@ Update__Q24Kart18WheelPhysicsHolderFRC4Vec3RC5Mtx34f = 0x8059a278
 sInstance__10KartParams = 0x809c1918
 sInstance__12DriverParams = 0x809c191c
 
+#ItemObjHolder
+GetTotalItemCount__Q24Item9ObjHolderCFv = 0x807974ac
 
 ##UI
 #SECTION
@@ -883,6 +915,11 @@ GetControllerHolder__10SectionPadCFUi = 0x8061b398
 EnablePointer__10SectionPadFb = 0x8061bd14
 GetType__10SectionPadFUi = 0x8061bfac
 
+#EggVideo
+GetTickPerVRetrace__Q23EGG5VideoFv = 0x80243ed0
+SetFramerate__9GameSceneFUc = 0x8051af84
+GetStaticInstance__8RKSystemFv = 0x80008e84
+
 #Section
 __ct__7SectionFv = 0x80621d0c
 Draw__7SectionFUi = 0x80622764
@@ -893,6 +930,10 @@ ScheduleDisconnection__7SectionFv = 0x80623054
 CreatePageById__7SectionF6PageId = 0x80623390
 CreateSectionPages__7SectionF9SectionId = 0x8062c3a4
 AddInitialLayers__7SectionF9SectionId = 0x80630094
+RemoveTopLayerPage__7SectionFv = 0x80623288
+UpdateLayers__7SectionFv = 0x80623068
+Update__7SectionFv = 0x806224f8
+
 
 #RKSYSRequester
 NotifyNewLicenseContent__14RKSYSRequesterFv = 0x80621410
@@ -906,6 +947,7 @@ LoadSection__10SectionMgrFv = 0x80634fbc
 SetNextSection__10SectionMgrF9SectionIdUi = 0x80635a3c
 RequestSceneChange__10SectionMgrFUiUi = 0x80635ac8
 sInstance__10SectionMgr = 0x809c1e38
+GetSectionPriority__10SectionMgrF9SectionId = 0x80634b80
 
 ##CONTROLS
 ##Supporting SubClasses
@@ -933,7 +975,8 @@ __vt__10BaseLayout = 0x808b950c
 __ct__9BMGHolderFv = 0x805f8b34
 __dt__9BMGHolderFv = 0x805f8b50
 Init__9BMGHolderFRC9BMGHeader = 0x805f8c00
-GetMsgId__8BMGHolderFi = 0x805f8c88
+GetMsgId__9BMGHolderCFi = 0x805f8c88
+GetMsgByMsgId__9BMGHolderCFi = 0x805f8cf0
 
 #UIAnimator
 UIAnimator = 0x8063c3ec
@@ -1220,6 +1263,10 @@ GetRuntimeTypeInfo__12CtrlRaceBaseCFv = 0x807ec8ec
 IsOnlineVS__12CtrlRaceTimeFRC8Racedata = 0x807f83a4
 __vt__12CtrlRaceBase = 0x808d3a98
 
+#CtrlRace2DMap
+__vt__19CtrlRace2DMapObject = 0x808d3900
+LoadPictureLayout__15LayoutUIControlFPCcPCc = 0x8063d9c0
+
 #CtrlRaceGhostDiffTime
 SubtractTimers__21CtrlRaceGhostDiffTimeFRC5TimerRC5Timer = 0x807ee860
 Load__21CtrlRaceGhostDiffTimeFPCc = 0x807ee8e0
@@ -1245,6 +1292,7 @@ FillFinishTime__14CtrlRaceResultFUc = 0x807f595c
 #CtrlRaceTime
 SetTimer__12CtrlRaceTimeFP5Timer = 0x807f84c0
 EnableFlashingAnimation__12CtrlRaceTimeFv = 0x807f8878
+CloneTimer__8RaceinfoFP5Timer = 0x80535ca0
 
 #CtrlRaceWifiMessage
 GetClassName__24CtrlRaceWifiStartMessageCFv = 0x807f8988
@@ -1295,6 +1343,10 @@ AddPageLayer__4PageF6PageIdUi = 0x806025b0
 PlaySound__4PageF8SoundIDsUi = 0x80602cf8
 SetTransitionSound__4PageFUiUi = 0x80602d20
 transitionDelay__4Page = 0x80896830
+
+#YesNoMessageBox
+SetMessageBoxMsg__Q25Pages5YesNoFUiPQ24Text4Info = 0x806525fc
+PrepareButton__Q25Pages5YesNoFUiUiPQ24Text4InfoUi39PtmfHolder_2A<4Page,v,Ui,R10PushButton> = 0x80652604
 
 #FriendRoomPage
 __ct__Q25Pages10FriendRoomFv = 0x805d7f78
@@ -1403,6 +1455,7 @@ UpdateOnlineParams__Q25Pages14SELECTStageMgrFv = 0x806515cc
 SetModeTypes__Q25Pages14SELECTStageMgrFv = 0x80651854
 IsHomeMenuWorking__Q25Pages14SELECTStageMgrCFv = 0x80651ba8
 GetRuntimeTypeInfo__Q25Pages14SELECTStageMgrCFv = 0x80651bb0
+Reset__12OnlineParamsFv = 0x805e3ba8
 
 ##MENU
 #Menu
@@ -1594,9 +1647,13 @@ ScheduleShutdown__Q25RKNet10ControllerFv = 0x806561a8
 ResetRH1andROOM__Q25RKNet10ControllerFv = 0x80656898
 ProcessPlayerDisconnect__Q25RKNet10ControllerFUi = 0x80658990
 ProcessRACEPacket__Q25RKNet10ControllerFUiRCQ25RKNet16RACEPacketHeaderUi = 0x80659a84
+StartSearchRegional__Q25RKNet10ControllerFUi = 0x80656270
 UpdateAidsBelongingToPlayerIds__Q25RKNet10ControllerFv = 0x80659bc0
- GetFriendSearchType__Q25RKNet10ControllerCFUi = 0x80659fa4
+GetFriendSearchType__Q25RKNet10ControllerCFUi = 0x80659fa4
 sInstance__Q25RKNet10Controller = 0x809c20d8
+UpdateStatusDatas__Q25RKNet10ControllerFv = 0x8065a0b4
+SetupGameServer__Q25RKNet10ControllerFv = 0x800d1984
+UpdateServersAsync__Q25RKNet10ControllerFv = 0x80656b44
 
 #PacketMgr
 sInstance__Q25RKNet9PacketMgr = 0x809c1f50
@@ -1607,10 +1664,20 @@ Append__Q25RKNet12PacketHolder<v>FPCvUi = 0x8065a38c
 sInstance__Q25RKNet13SELECTHandler = 0x809c2100
 
 #ROOM
+sInstance__Q25RKNet11ROOMHandler = 0x809c20e0
 SetAllToSendPackets__Q25RKNet11ROOMHandlerFQ25RKNet10ROOMPacket = 0x8065ae70
+Reset__Q25RKNet11ROOMHandlerFv = 0x8065ac94
+GetTimer__Q25RKNet11ITEMHandlerCFUc = 0x8065d4ac
+IsPlayerIdConnected__Q25RKNet11ITEMHandlerCFUc = 0x8065d55c
+GetDraggedItemMode__Q25RKNet11ITEMHandlerCFUc = 0x8065d3f8
+IsPlayerConnected__Q25RKNet9PacketMgrCFUi = 0x80654820
+IsPlayerLocal__Q25RKNet9PacketMgrCFUi = 0x806548a8
+GetHudSlotId__Q25RKNet9PacketMgrCFUi = 0x80654918
+GetLocalPlayerId__Q25RKNet10ControllerCFi = 0x80659d58
 
 #RH1
 sInstance__Q25RKNet10RH1Handler = 0x809c2118
+
 
 #EVENT
 AddEntry__Q25RKNet12EVENTHandlerF9ItemObjIdQ25RKNet11EVENTActionPCvUi = 0x8065b780
@@ -1621,6 +1688,8 @@ sInstance__Q25RKNet12EVENTHandler = 0x809c20f0
 GetStoredItem__Q25RKNet11ITEMHandlerCFUc = 0x8065d21c
 ImportNewPackets__Q25RKNet11ITEMHandlerFv = 0x8065dd3c
 sInstance__Q25RKNet11ITEMHandler = 0x809c20f8
+GetStoredItemMode__Q25RKNet11ITEMHandlerCFUc = 0x8065d364
+GetDraggedItem__Q25RKNet11ITEMHandlerCFUc = 0x8065d2b0
 
 #SELECT
 DestroyInstance__Q25RKNet13SELECTHandlerFv = 0x8065ff60
@@ -1635,6 +1704,9 @@ DecideTrack__Q25RKNet13SELECTHandlerFv = 0x80661ce8
 AllocatePlayerIdsToAids__Q25RKNet13SELECTHandlerFv = 0x80662034
 DecidePrivateTeams__Q25RKNet13SELECTHandlerFRUi = 0x80662588
 
+#Rating
+GetLowerRange__Q25RKNet16RatingRangeMakerCFUsb = 0x8065a5e0
+GetUpperRange__Q25RKNet16RatingRangeMakerCFUsb = 0x8065a64c
 
 ##EFFECTS
 #EffectsMgr
@@ -1673,6 +1745,7 @@ HoldSound__Q25Audio9KartActorFUiPQ25Audio6Handle = 0x80709338
 SetRaceState__Q25Audio7RaceMgrFQ25Audio9RaceState = 0x80711ac4
 trackIdxToCourseID__Q25Audio7RaceMgr = 0x80895238
 sInstance__Q25Audio7RaceMgr = 0x809c27f8
+Calc__Q25Audio7RaceMgrFv = 0x80710ca0
 
 #RaceRSARPlayer
 PlayEndRaceMenuButtonClickSound__Q25Audio14RaceRSARPlayerFv = 0x80715ff0
@@ -1703,6 +1776,9 @@ sInstance__8GlobeMgr = 0x809c2cb8
 #Entity
 MakeDynamic__6EntityFv = 0x80786f6c
 
+#EntityManager
+sInstance__13EntityManager = 0x809c2ef0
+
 #CourseMgr
 IsCollidingAddEntry__9CourseMgrFRC4Vec3RC4Vec311KCLBitfieldP13CollisionInfoP13KCLTypeHolderUif = 0x807907f8
 sInstance__11CourseMgr = 0x809c2F44
@@ -1712,6 +1788,7 @@ sInstance__11CourseMgr = 0x809c2F44
 __ct__Q24Item13ObjPropertiesFRCQ24Item13ObjProperties = 0x80790e7c
 itemObjProperties = 0x809c2f48
 behaviourTable__Q24Item8Behavior = 0x809c36a0
+objProperties__Q24Item13ObjProperties = 0x809c2f48
 
 #Player
 Update__19ItemHolderPlayerSubFv = 0x80795668
@@ -1733,7 +1810,9 @@ AddUseEVENTEntry__Q24Item3ObjF9ItemObjIdUc = 0x8079c220
 LoadGraphicsImplicitBRRESNoFunc__Q24Item3ObjFPCcPCcPQ34Item3Obj8AnmParamQ44nw4r3g3d6ScnMdl12BufferOptionUi = 0x8079ff5c
 LoadGraphicsImplicitBRRES__Q24Item3ObjFPCcPCcUcPQ34Item3Obj8AnmParamQ44nw4r3g3d6ScnMdl12BufferOptionPv = 0x8079ffdc
 LoadGraphics__Q24Item3ObjFPCcPCcPCcUcPQ34Item3Obj8AnmParamQ44nw4r3g3d6ScnMdl12BufferOptionPvUi = 0x807a0040
+CreateItemDirect__Q24Item7ManagerF9ItemObjIdPC4Vec3P4Vec3Ui = 0x80799fbc
 DeployBlooper__Q24Item8GessoMgrFUs = 0x807a9128
+DisappearDueToExcess__Q24Item3ObjFb = 0x807a6c14
 
 #ItemSlot
 DecideItem__Q24Item12ItemSlotDataFUsUcbbPQ24Item6Player = 0x807bb42c
@@ -1744,6 +1823,7 @@ itemSlotData = 0x809c3670
 Update__Q24Item15PlayerInventoryFv = 0x807bc6e8
 SetItem__Q24Item15PlayerInventoryF6ItemIdb = 0x807bc940
 RemoveItems__Q24Item15PlayerInventoryFUi = 0x807bc97c
+ClearAll__Q24Item15PlayerInventoryFv = 0x807bc9c0
 
 #Misc
 greenShellSpeed__4Item = 0x808a5dc0
@@ -1760,6 +1840,7 @@ GetRaceinfoRandom__9DriverMgrFv = 0x807bd718
 sInstance__9DriverMgr = 0x809c23f8
 isOnlineRace__9DriverMgr = 0x809c38b9
 isTT__9DriverMgr = 0x809c38bc
+ChangeFocusedPlayer__9DriverMgrFUc = 0x8078dde4
 
 
 ##OBJECTS
@@ -1866,6 +1947,152 @@ IsOnlineSection__F9SectionId = 0x80860484
 IsBattle__Fv = 0x80860a8c
 GetItemIconPaneName__F6ItemIdUi = 0x80860af0
 TimerToTextInfo__FRC5TimerRQ24Text4Info = 0x808608e4
+GetCharacterBMGId__F11CharacterIdb = 0x80833774
 
+GetMiiCharacterId__FRC3Mii = 0x80831af4
+GetCharacterIconPaneName__F11CharacterId = 0x80860acc
+SetButtonColours__Q223CtrlMenuCharacterSelect12ButtonDriverFUi = 0x807e4130
+OnButtonDriverSelect__Q25Pages15CharacterSelectFPQ223CtrlMenuCharacterSelect12ButtonDriverUiUc = 0x8083e5f4
+IsKartUnlocked = 0x8081cfb4
+IsKartUnlocked__F6KartIdUi = 0x8081cfb4
+__ptmf_test = 0x800213e4
+Real_DWCi_Auth_SendRequest = 0x800ed6ec
+s_auth_work = 0x8038633c
+s_auth_error = 0x802f1cB8
+NHTTPDestroyResponse__FPv = 0x801d92f8
+NHTTPSendRequestAsync__FPv = 0x801d925c
+NHTTPCreateRequest__FPCciPvUiPvPv = 0x801d8ff8
+sprintf = 0x80011a2c
 
+HasPlayerFinished__12CtrlRaceTimeFUc = 0x807f82bc
+WWFC_CUSTOM_REGION = 0x80005efc
+Blurry = 0x8016fba0
+VR_Address= 0x809C2108
+UltraUncutHook = 0x80001201
+FPSPatchHook = 0x80001202
+ItemRainOnlineFixHook = 0x8000120A
+RemoveBloom = 0x802575DF
+RemoveBackgroundBlur = 0x80258184
+GetCameraParamBin__Q24Kart4LinkFUiUi = 0x805927d4
+exhaustPipeboost = 0x809c21d0
+GetDriverParamEntry__4KartF11CharacterId = 0x80591f60
+IsCharacterUnlocked__F11CharacterIdb = 0x8054fed8
 
+sInstance__Q25RKNet11USERHandler = 0x809c2108
+saveFcAndCountryHookExit__Fv = 0x806513e4
+saveFcAndCountryInLiveHookExit__Fv = 0x8060a2b4
+displayFcAndCountryHookExit__Fv = 0x807f0050
+displayFcAndCountryInResultFillNameHookExit__Fv = 0x807f5300
+displayFcAndCountryInResultFillTimeHookExit__Fv = 0x807f5968
+MD5Digest__FPCUcUiPUc = 0x800f0e08
+MD5Digest = 0x800f0e08
+MD5Update = 0x800f0264
+PicturePaneExists__15LayoutUIControlFPCc = 0x8063e328
+current_time = 0x800f24c8
+
+Update__8ElineMgrFv = 0x8052d888
+UpdateFromPrevRace__16RacedataScenarioFv = 0x8052f1e0
+
+IsConnectedToAnyone__Q25RKNet10ControllerCFv = 0x80656f00
+GetOwnSelectId__Q25RKNet13SELECTHandlerCFv = 0x80660470
+KillFromOtherCollision__Q24Item3ObjFb = 0x807a6560
+UpdateTotalItemCountMinus30__Q24Item7ManagerFv = 0x80799a50
+GetBodyMatCol1__Q24Kart4LinkCFR4Vec3 = 0x80590c6c
+Sqrt__Q23EGG4MathFf = 0x8022f80c
+
+gpiAppendStringToBuffer__2GPFPPQ22GP10ConnectionPQ22GP7IBufferPCc = 0x800ff014
+
+#VotePage
+__ct__Q25Pages4VoteFv = 0x80642f90
+__dt__Q25Pages4VoteFv = 0x806430bc
+BeforeControlUpdate__Q25Pages4VoteFv = 0x806437e8
+#BeforeControlUpdate__Q36Pulsar2UI13SettingsPanelFv =
+GetRuntimeTypeInfo__Q25Pages4VoteCFv = 0x8064464c
+OnInit__Q25Pages4VoteFv = 0x80643168
+OnDispose__Q25Pages4VoteFv = 0x806433c8
+BeforeEntranceAnimations__Q25Pages4VoteFv = 0x806433cc
+BeforeExitAnimations__Q25Pages4VoteFv = 0x80643e98
+GetNextPage__Q25Pages4VoteCFv = 0x80643f18
+GetCurrentContext__2OSFv = 0x801a1ecc
+OnButtonClick__Q25Pages2VRFR10PushButtonUi = 0x8064ae6c
+HandleDeselect__18RadioButtonControlFUiUi = 0x80606434
+HandleSelect__18RadioButtonControlFUiUi = 0x806062d8
+HandleClick__18RadioButtonControlFUiUi = 0x80606620
+HandleDeselect__13UpDownControlFUiUi = 0x8063f7c4
+OnActivate__Q36Pulsar2UI5ExpVRFv = 0x8064a84c
+
+HandleDeselect__13UpDownControlFUiUi = 0x8063f7c4
+
+OnModeButtonSelect__Q36Pulsar2UI13ExpWFCModeSelFR10PushButtonUi = 0x8064c718
+Sin__Q23EGG4MathFf = 0x8022f860
+Cos__Q23EGG4MathFf = 0x8022f86c
+Spawn__Q24Item9ObjHolderFUiP7ItemObjUcRC4Vec3b = 0x80795e04
+sInstance__13EntityManager = 0x809c2ef0
+CreateItemDirect__Q24Item7ManagerF6ItemIdPC4Vec3P4Vec3Ui = 0x80799fbc
+GenerateItemDirect__Q24Item7ManagerFUiP4Vec3 = 0x8079a12c
+Init__Q24Item3ObjFUiUs9ItemObjId = 0x8079e224
+Spawn__Q24Item3ObjF9ItemObjIdUcRC4Vec3b = 0x8079e550
+AddShootEVENTEntry__Q24Item3ObjF9ItemObjId = 0x8079c2e4
+Set__Q24Item3ObjF9ItemObjId = 0x8079e5f4
+LoadItemLight__Q24Item3ObjFv = 0x807a0380
+UpdateModelFromVecs__Q24Item3ObjFP5Mtx34 = 0x807a07b8
+RegisterEntity__Q24Item3ObjFb = 0x8079ee30
+LoadGraphicsDefault__Q24Item3ObjFPCcPCcPCcPQ34Item3Obj8AnmParam = 0x8079ffa4
+GetPosition__Q24Kart4LinkCFv = 0x8059020c
+IsThereCapacityForItem__Q24Item7ManagerF6ItemId = 0x80799be8
+UseMushroom__Q24Item6PlayerFv = 0x807a9d3c
+UseStar__Q24Item6PlayerFv = 0x807b706c
+UsePow__Q24Item6PlayerFv = 0x807b1b2c
+UseBullet__Q24Item6PlayerFv = 0x807a9afc
+UseThunder__Q24Item6PlayerFv = 0x807b7b7c
+KillFromPlayerCollision__Q24Item3ObjFbUc = 0x807a6614
+AddHitFreeEVENTEntry__Q24Item3ObjF9ItemObjIdUiUcUs = 0x8079c3c4
+KillObj__Q24Item3ObjFUi = 0x807a6328
+Update__16RaceTimerMgrBaseFv = 0x805336a0
+Update__12RaceTimerMgrFv = 0x80535864
+SetActive__5TimerFb = 0x80544310
+__ct__Q24Item3ObjFv = 0x8079d8bc
+InitItemDirects__Q24Item7ManagerFv = 0x80799e50
+Init__Q24Item7ManagerFv = 0x80799794
+freeAll__Q23EGG7ExpHeapFv = 0x80226ebc
+IsConnectedToAnyone__Q25RKNet10ControllerCFv = 0x80656f00
+GetConnectionState__Q25RKNet10ControllerCFv = 0x80658148
+IsIdle__Q25RKNet10ControllerFv = 0x80656e44
+SetPlayerITEMItem__Q25RKNet9PacketMgrFUc6ItemId = 0x8065471c
+UpdateModelPositions__Q24Item9ObjHolderFv = 0x80796b30
+AddEVENTEntry__Q25RKNet9PacketMgrF9ItemObjIdQ25RKNet11EVENTActionPvUi = 0x8065474c
+sqrt__Fd = 0x8022f80c
+GetColumnByIdx__5Mtx34FUi = 0x80537b80
+cos__Fd = 0x8022f86c
+sin__Fd = 0x8022f860
+GetBodyMatCol2__Q24Kart4LinkCFv = 0x80590ce4
+CreateExpHeapEx__3MEMFPvUiUs = 0x80198ca8
+FindContainHeap__3MEMFPCv = 0x80198658
+UpdateTotalItemCountMinus30__Q24Item7ManagerFv = 0x80799a50
+SetItemAndMode__Q25RKNet11ITEMHandlerFUcUc6ItemId = 0x8065cfc4
+GetTotalFreeSizeForExpHeap__3MEMFPQ23MEM9iHeapHead = 0x80199104
+GetAllocatableSizeForExpHeapEx__3MEMFPQ23MEM9iHeapHeadi = 0x80199180
+
+Create__Q23EGG7ExpHeapFPviUs = 0x80226a1c
+GetTotalItemCount__Q24Item9ObjHolderCFv = 0x807974ac
+Sqrt__Q23EGG4MathFf = 0x8022f80c
+PrepareButton__Q25Pages5YesNoFUiUiPQ24Text4InfoUiRC39PtmfHolder_2A<4Page,v,Ui,R10PushButton> = 0x80652604
+IsLocal__Q24Kart4LinkCFv = 0x80590650
+GetCupNameBMGId__FUi = 0x80833638
+
+#IDK
+current__Q23EGG4Heap = 0x80386EA0
+RegisterItem__Q24Item7ManagerFPQ24Item3Obj = 0x807A51C4
+
+SetupOnlineVSProbabilities__Q24Item12ItemSlotDataFv = 0x807bbd60
+SetupVSProbabilities__Q24Item12ItemSlotDataFv = 0x807bbef8
+PostProcessVSTable__Q24Item12ItemSlotDataFPQ34Item12ItemSlotData13Probabilities = 0x807bad20
+ptr_playerBase = 0x809C18F8
+fun_playSound = 0x8071497C
+ptr_menuPageOrSomething = 0x809C2850
+DWC_GetGroupId = 0x800d4994
+DWCi_SetupGameServer_InterChange = 0x800e6b10
+gpIsBuddy = 0x800fc2a4
+ConnectToAnybodyAsync__Q25RKNet10ControllerFv = 0x80659170
+DWC_RequestSuspendMatchAsync = 0x800d49b0
+FriendStatusHook = 0x8065a110
